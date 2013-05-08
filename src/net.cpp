@@ -1,5 +1,5 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Dotcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 
@@ -409,7 +409,7 @@ bool GetMyExternalIP(CNetAddr& ipRet)
 void ThreadGetMyExternalIP(void* parg)
 {
     // Make this thread recognisable as the external IP detection thread
-    RenameThread("bitcoin-ext-ip");
+    RenameThread("dotcoin-ext-ip");
 
     CNetAddr addrLocalHost;
     if (GetMyExternalIP(addrLocalHost))
@@ -641,7 +641,7 @@ void CNode::copyStats(CNodeStats &stats)
 void ThreadSocketHandler(void* parg)
 {
     // Make this thread recognisable as the networking thread
-    RenameThread("bitcoin-net");
+    RenameThread("dotcoin-net");
 
     try
     {
@@ -1000,7 +1000,7 @@ void ThreadSocketHandler2(void* parg)
 void ThreadMapPort(void* parg)
 {
     // Make this thread recognisable as the UPnP thread
-    RenameThread("bitcoin-UPnP");
+    RenameThread("dotcoin-UPnP");
 
     try
     {
@@ -1149,13 +1149,13 @@ void MapPort()
 // The first name is used as information source for addrman.
 // The second name should resolve to a list of seed addresses.
 static const char *strDNSSeed[][2] = {
-    {"novacoin.su", "seed.novacoin.su"},
+    {"dotcoin.su", "seed.dotcoin.su"},
 };
 
 void ThreadDNSAddressSeed(void* parg)
 {
     // Make this thread recognisable as the DNS seeding thread
-    RenameThread("bitcoin-dnsseed");
+    RenameThread("dotcoin-dnsseed");
 
     try
     {
@@ -1250,7 +1250,7 @@ void ThreadDumpAddress2(void* parg)
 void ThreadDumpAddress(void* parg)
 {
     // Make this thread recognisable as the address dumping thread
-    RenameThread("bitcoin-adrdump");
+    RenameThread("dotcoin-adrdump");
 
     try
     {
@@ -1265,7 +1265,7 @@ void ThreadDumpAddress(void* parg)
 void ThreadOpenConnections(void* parg)
 {
     // Make this thread recognisable as the connection opening thread
-    RenameThread("bitcoin-opencon");
+    RenameThread("dotcoin-opencon");
 
     try
     {
@@ -1309,7 +1309,7 @@ void static ThreadStakeMinter(void* parg)
     try
     {
         vnThreadsRunning[THREAD_MINTER]++;
-        BitcoinMiner(pwallet, true);
+        DotcoinMiner(pwallet, true);
         vnThreadsRunning[THREAD_MINTER]--;
     }
     catch (std::exception& e) {
@@ -1447,7 +1447,7 @@ void ThreadOpenConnections2(void* parg)
 void ThreadOpenAddedConnections(void* parg)
 {
     // Make this thread recognisable as the connection opening thread
-    RenameThread("bitcoin-opencon");
+    RenameThread("dotcoin-opencon");
 
     try
     {
@@ -1578,7 +1578,7 @@ bool OpenNetworkConnection(const CAddress& addrConnect, CSemaphoreGrant *grantOu
 void ThreadMessageHandler(void* parg)
 {
     // Make this thread recognisable as the message handling thread
-    RenameThread("bitcoin-msghand");
+    RenameThread("dotcoin-msghand");
 
     try
     {
@@ -1825,7 +1825,7 @@ void static Discover()
 void StartNode(void* parg)
 {
     // Make this thread recognisable as the startup thread
-    RenameThread("bitcoin-start");
+    RenameThread("dotcoin-start");
 
     if (semOutbound == NULL) {
         // initialize semaphore
@@ -1888,7 +1888,7 @@ void StartNode(void* parg)
         printf("Error: NewThread(ThreadStakeMinter) failed\n");
 
     // Generate coins in the background
-    GenerateBitcoins(GetBoolArg("-gen", false), pwalletMain);
+    GenerateDotcoins(GetBoolArg("-gen", false), pwalletMain);
 }
 
 bool StopNode()
@@ -1914,7 +1914,7 @@ bool StopNode()
     if (vnThreadsRunning[THREAD_SOCKETHANDLER] > 0) printf("ThreadSocketHandler still running\n");
     if (vnThreadsRunning[THREAD_OPENCONNECTIONS] > 0) printf("ThreadOpenConnections still running\n");
     if (vnThreadsRunning[THREAD_MESSAGEHANDLER] > 0) printf("ThreadMessageHandler still running\n");
-    if (vnThreadsRunning[THREAD_MINER] > 0) printf("ThreadBitcoinMiner still running\n");
+    if (vnThreadsRunning[THREAD_MINER] > 0) printf("ThreadDotcoinMiner still running\n");
     if (vnThreadsRunning[THREAD_RPCLISTENER] > 0) printf("ThreadRPCListener still running\n");
     if (vnThreadsRunning[THREAD_RPCHANDLER] > 0) printf("ThreadsRPCServer still running\n");
 #ifdef USE_UPNP

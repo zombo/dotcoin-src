@@ -1,10 +1,10 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Dotcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
 #include "db.h"
 #include "walletdb.h"
-#include "bitcoinrpc.h"
+#include "dotcoinrpc.h"
 #include "net.h"
 #include "init.h"
 #include "util.h"
@@ -43,7 +43,7 @@ void ExitTimeout(void* parg)
 void StartShutdown()
 {
 #ifdef QT_GUI
-    // ensure we leave the Qt main loop for a clean GUI exit (Shutdown() is called in bitcoin.cpp afterwards)
+    // ensure we leave the Qt main loop for a clean GUI exit (Shutdown() is called in dotcoin.cpp afterwards)
     uiInterface.QueueShutdown();
 #else
     // Without UI, Shutdown() can simply be started in a new thread
@@ -57,7 +57,7 @@ void Shutdown(void* parg)
     static bool fTaken;
 
     // Make this thread recognisable as the shutdown thread
-    RenameThread("bitcoin-shutoff");
+    RenameThread("dotcoin-shutoff");
 
     bool fFirstThread = false;
     {
@@ -84,7 +84,7 @@ void Shutdown(void* parg)
         printf("NovaCoin exited\n\n");
         fExit = true;
 #ifndef QT_GUI
-        // ensure non-UI client gets exited here, but let Bitcoin-Qt reach 'return 0;' in bitcoin.cpp
+        // ensure non-UI client gets exited here, but let Dotcoin-Qt reach 'return 0;' in dotcoin.cpp
         exit(0);
 #endif
     }
@@ -124,7 +124,7 @@ bool AppInit(int argc, char* argv[])
         //
         // Parameters
         //
-        // If Qt is used, parameters/bitcoin.conf are parsed in qt/bitcoin.cpp's main()
+        // If Qt is used, parameters/dotcoin.conf are parsed in qt/dotcoin.cpp's main()
         ParseParameters(argc, argv);
         if (!boost::filesystem::is_directory(GetDataDir(false)))
         {
@@ -135,13 +135,13 @@ bool AppInit(int argc, char* argv[])
 
         if (mapArgs.count("-?") || mapArgs.count("--help"))
         {
-            // First part of help message is specific to bitcoind / RPC client
+            // First part of help message is specific to dotcoind / RPC client
             std::string strUsage = _("NovaCoin version") + " " + FormatFullVersion() + "\n\n" +
                 _("Usage:") + "\n" +
-                  "  novacoind [options]                     " + "\n" +
-                  "  novacoind [options] <command> [params]  " + _("Send command to -server or novacoind") + "\n" +
-                  "  novacoind [options] help                " + _("List commands") + "\n" +
-                  "  novacoind [options] help <command>      " + _("Get help for a command") + "\n";
+                  "  dotcoind [options]                     " + "\n" +
+                  "  dotcoind [options] <command> [params]  " + _("Send command to -server or dotcoind") + "\n" +
+                  "  dotcoind [options] help                " + _("List commands") + "\n" +
+                  "  dotcoind [options] help <command>      " + _("Get help for a command") + "\n";
 
             strUsage += "\n" + HelpMessage();
 
@@ -151,7 +151,7 @@ bool AppInit(int argc, char* argv[])
 
         // Command-line RPC
         for (int i = 1; i < argc; i++)
-            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "novacoin:"))
+            if (!IsSwitchChar(argv[i][0]) && !boost::algorithm::istarts_with(argv[i], "dotcoin:"))
                 fCommandLine = true;
 
         if (fCommandLine)
@@ -177,7 +177,7 @@ int main(int argc, char* argv[])
 {
     bool fRet = false;
 
-    // Connect bitcoind signal handlers
+    // Connect dotcoind signal handlers
     noui_connect();
 
     fRet = AppInit(argc, argv);
@@ -219,8 +219,8 @@ std::string HelpMessage()
 {
     string strUsage = _("Options:") + "\n" +
         "  -?                     " + _("This help message") + "\n" +
-        "  -conf=<file>           " + _("Specify configuration file (default: novacoin.conf)") + "\n" +
-        "  -pid=<file>            " + _("Specify pid file (default: novacoind.pid)") + "\n" +
+        "  -conf=<file>           " + _("Specify configuration file (default: dotcoin.conf)") + "\n" +
+        "  -pid=<file>            " + _("Specify pid file (default: dotcoind.pid)") + "\n" +
         "  -gen                   " + _("Generate coins") + "\n" +
         "  -gen=0                 " + _("Don't generate coins") + "\n" +
         "  -datadir=<dir>         " + _("Specify data directory") + "\n" +
@@ -290,7 +290,7 @@ std::string HelpMessage()
         "  -blockmaxsize=<n>      "   + _("Set maximum block size in bytes (default: 250000)") + "\n" +
         "  -blockprioritysize=<n> "   + _("Set maximum size of high-priority/low-fee transactions in bytes (default: 27000)") + "\n" +
 
-        "\n" + _("SSL options: (see the Bitcoin Wiki for SSL setup instructions)") + "\n" +
+        "\n" + _("SSL options: (see the Dotcoin Wiki for SSL setup instructions)") + "\n" +
         "  -rpcssl                                  " + _("Use OpenSSL (https) for JSON-RPC connections") + "\n" +
         "  -rpcsslcertificatechainfile=<file.cert>  " + _("Server certificate file (default: server.cert)") + "\n" +
         "  -rpcsslprivatekeyfile=<file.pem>         " + _("Server private key (default: server.pem)") + "\n" +
@@ -299,7 +299,7 @@ std::string HelpMessage()
     return strUsage;
 }
 
-/** Initialize bitcoin.
+/** Initialize dotcoin.
  *  @pre Parameters should be parsed and config file should be read.
  */
 bool AppInit2()
@@ -443,7 +443,7 @@ bool AppInit2()
 
     std::string strDataDir = GetDataDir().string();
 
-    // Make sure only a single Bitcoin process is using the data directory.
+    // Make sure only a single Dotcoin process is using the data directory.
     boost::filesystem::path pathLockFile = GetDataDir() / ".lock";
     FILE* file = fopen(pathLockFile.string().c_str(), "a"); // empty lock file; created if it doesn't exist.
     if (file) fclose(file);
@@ -670,7 +670,7 @@ bool AppInit2()
         return InitError(_("Error loading blkindex.dat"));
 
     // as LoadBlockIndex can take several minutes, it's possible the user
-    // requested to kill bitcoin-qt during the last operation. If so, exit.
+    // requested to kill dotcoin-qt during the last operation. If so, exit.
     // As the program has not fully started yet, Shutdown() is possibly overkill.
     if (fRequestShutdown)
     {

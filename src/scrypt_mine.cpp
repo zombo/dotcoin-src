@@ -38,7 +38,7 @@
 #include "net.h"
 
 extern bool fShutdown;
-extern bool fGenerateBitcoins;
+extern bool fGenerateDotcoins;
 
 extern CBlockIndex* pindexBest;
 extern uint32_t nTransactionsUpdated;

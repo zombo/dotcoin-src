@@ -1,9 +1,9 @@
 // Copyright (c) 2009-2010 Satoshi Nakamoto
-// Copyright (c) 2009-2012 The Bitcoin developers
+// Copyright (c) 2009-2012 The Dotcoin developers
 // Distributed under the MIT/X11 software license, see the accompanying
 // file COPYING or http://www.opensource.org/licenses/mit-license.php.
-#ifndef BITCOIN_MAIN_H
-#define BITCOIN_MAIN_H
+#ifndef DOTCOIN_MAIN_H
+#define DOTCOIN_MAIN_H
 
 #include "bignum.h"
 #include "sync.h"
@@ -106,7 +106,7 @@ CBlockIndex* FindBlockByHeight(int nHeight);
 bool ProcessMessages(CNode* pfrom);
 bool SendMessages(CNode* pto, bool fSendTrickle);
 bool LoadExternalBlockFile(FILE* fileIn);
-void GenerateBitcoins(bool fGenerate, CWallet* pwallet);
+void GenerateDotcoins(bool fGenerate, CWallet* pwallet);
 CBlock* CreateNewBlock(CWallet* pwallet, bool fProofOfStake=false);
 void IncrementExtraNonce(CBlock* pblock, CBlockIndex* pindexPrev, unsigned int& nExtraNonce);
 void FormatHashBuffers(CBlock* pblock, char* pmidstate, char* pdata, char* phash1);
@@ -121,7 +121,7 @@ std::string GetWarnings(std::string strFor);
 bool GetTransaction(const uint256 &hash, CTransaction &tx, uint256 &hashBlock);
 uint256 WantedByOrphan(const CBlock* pblockOrphan);
 const CBlockIndex* GetLastBlockIndex(const CBlockIndex* pindex, bool fProofOfStake);
-void BitcoinMiner(CWallet *pwallet, bool fProofOfStake);
+void DotcoinMiner(CWallet *pwallet, bool fProofOfStake);
 void ResendWalletTransactions();
 
 
@@ -558,7 +558,7 @@ public:
      */
     unsigned int GetP2SHSigOpCount(const MapPrevTx& mapInputs) const;
 
-    /** Amount of bitcoins spent by this transaction.
+    /** Amount of dotcoins spent by this transaction.
         @return sum of all outputs (note: does not include fees)
      */
     int64 GetValueOut() const
@@ -573,7 +573,7 @@ public:
         return nValueOut;
     }
 
-    /** Amount of bitcoins coming in to this transaction
+    /** Amount of dotcoins coming in to this transaction
         Note that lightweight clients may not know anything besides the hash of previous transactions,
         so may not be able to calculate this.
 
@@ -924,7 +924,7 @@ public:
     // ppcoin: entropy bit for stake modifier if chosen by modifier
     unsigned int GetStakeEntropyBit(unsigned int nHeight) const
     {
-        // Protocol switch to support p2pool at novacoin block #9689
+        // Protocol switch to support p2pool at dotcoin block #9689
         if (nHeight >= 9689)
         {
             // Take last bit of block hash as entropy bit
@@ -933,7 +933,7 @@ public:
                 printf("GetStakeEntropyBit: nHeight=%u hashBlock=%s nEntropyBit=%u\n", nHeight, GetHash().ToString().c_str(), nEntropyBit);
             return nEntropyBit;
         }
-        // Before novacoin block #9689 - old protocol
+        // Before dotcoin block #9689 - old protocol
         uint160 hashSig = Hash160(vchBlockSig);
         if (fDebug && GetBoolArg("-printstakemodifier"))
             printf("GetStakeEntropyBit: hashSig=%s", hashSig.ToString().c_str());
