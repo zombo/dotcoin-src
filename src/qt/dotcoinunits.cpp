@@ -45,9 +45,9 @@ QString DotcoinUnits::description(int unit)
 {
     switch(unit)
     {
-    case BTC: return QString("NovaCoins");
-    case mBTC: return QString("Milli-NovaCoins (1 / 1,000)");
-    case uBTC: return QString("Micro-NovaCoins (1 / 1,000,000)");
+    case BTC: return QString("DotCoins");
+    case mBTC: return QString("Milli-DotCoins (1 / 1,000)");
+    case uBTC: return QString("Micro-DotCoins (1 / 1,000,000)");
     default: return QString("???");
     }
 }

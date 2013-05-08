@@ -18,14 +18,14 @@ BEGIN
     BEGIN
         BLOCK "040904E4" // U.S. English - multilingual (hex)
         BEGIN
-            VALUE "CompanyName",        "NovaCoin"
-            VALUE "FileDescription",    "NovaCoin-Qt (OSS GUI client for NovaCoin)"
+            VALUE "CompanyName",        "DotCoin"
+            VALUE "FileDescription",    "DotCoin-Qt (OSS GUI client for DotCoin)"
             VALUE "FileVersion",        VER_FILEVERSION_STR
             VALUE "InternalName",       "dotcoin-qt"
-            VALUE "LegalCopyright",     "2009-2012 The Dotcoin developers, 2012-2013 The NovaCoin & PPCoin developers"
+            VALUE "LegalCopyright",     "2009-2012 The Dotcoin developers, 2012-2013 The DotCoin & DotCoin developers"
             VALUE "LegalTrademarks1",   "Distributed under the MIT/X11 software license, see the accompanying file COPYING or http://www.opensource.org/licenses/mit-license.php."
             VALUE "OriginalFilename",   "dotcoin-qt.exe"
-            VALUE "ProductName",        "NovaCoin-Qt"
+            VALUE "ProductName",        "DotCoin-Qt"
             VALUE "ProductVersion",     VER_PRODUCTVERSION_STR
         END
     END

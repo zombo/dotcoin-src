@@ -24,7 +24,7 @@ QT_TRANSLATE_NOOP("dotcoin-core", ""
 "An error occurred while setting up the RPC port %u for listening on IPv6, "
 "falling back to IPv4: %s"),
 QT_TRANSLATE_NOOP("dotcoin-core", ""
-"Cannot obtain a lock on data directory %s.  NovaCoin is probably already "
+"Cannot obtain a lock on data directory %s.  DotCoin is probably already "
 "running."),
 QT_TRANSLATE_NOOP("dotcoin-core", ""
 "Detach block and address databases. Increases shutdown time (default: 0)"),
@@ -52,13 +52,13 @@ QT_TRANSLATE_NOOP("dotcoin-core", ""
 "Set maximum size of high-priority/low-fee transactions in bytes (default: "
 "27000)"),
 QT_TRANSLATE_NOOP("dotcoin-core", ""
-"Unable to bind to %s on this computer. NovaCoin is probably already running."),
+"Unable to bind to %s on this computer. DotCoin is probably already running."),
 QT_TRANSLATE_NOOP("dotcoin-core", ""
 "Warning: -paytxfee is set very high! This is the transaction fee you will "
 "pay if you send a transaction."),
 QT_TRANSLATE_NOOP("dotcoin-core", ""
 "Warning: Please check that your computer's date and time are correct! If "
-"your clock is wrong NovaCoin will not work properly."),
+"your clock is wrong DotCoin will not work properly."),
 QT_TRANSLATE_NOOP("dotcoin-core", ""
 "Warning: error reading wallet.dat! All keys read correctly, but transaction "
 "data or address book entries might be missing or incorrect."),
@@ -93,7 +93,7 @@ QT_TRANSLATE_NOOP("dotcoin-core", "Done loading"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Error loading blkindex.dat"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Error loading wallet.dat"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Error loading wallet.dat: Wallet corrupted"),
-QT_TRANSLATE_NOOP("dotcoin-core", "Error loading wallet.dat: Wallet requires newer version of NovaCoin"),
+QT_TRANSLATE_NOOP("dotcoin-core", "Error loading wallet.dat: Wallet requires newer version of DotCoin"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Error"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Error: Transaction creation failed  "),
 QT_TRANSLATE_NOOP("dotcoin-core", "Error: Wallet locked, unable to create transaction  "),
@@ -123,8 +123,8 @@ QT_TRANSLATE_NOOP("dotcoin-core", "Loading wallet..."),
 QT_TRANSLATE_NOOP("dotcoin-core", "Maintain at most <n> connections to peers (default: 125)"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Maximum per-connection receive buffer, <n>*1000 bytes (default: 5000)"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Maximum per-connection send buffer, <n>*1000 bytes (default: 1000)"),
-QT_TRANSLATE_NOOP("dotcoin-core", "NovaCoin version"),
-QT_TRANSLATE_NOOP("dotcoin-core", "NovaCoin"),
+QT_TRANSLATE_NOOP("dotcoin-core", "DotCoin version"),
+QT_TRANSLATE_NOOP("dotcoin-core", "DotCoin"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Only connect to nodes in network <net> (IPv4, IPv6 or Tor)"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Options:"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Output extra debugging information. Implies all other -debug* options"),
@@ -170,7 +170,7 @@ QT_TRANSLATE_NOOP("dotcoin-core", "Use proxy to reach tor hidden services (defau
 QT_TRANSLATE_NOOP("dotcoin-core", "Use the test network"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Username for JSON-RPC connections"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Verifying database integrity..."),
-QT_TRANSLATE_NOOP("dotcoin-core", "Wallet needed to be rewritten: restart NovaCoin to complete"),
+QT_TRANSLATE_NOOP("dotcoin-core", "Wallet needed to be rewritten: restart DotCoin to complete"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Warning: Disk space is low!"),
 QT_TRANSLATE_NOOP("dotcoin-core", "Warning: This version is obsolete, upgrade required!"),
 QT_TRANSLATE_NOOP("dotcoin-core", "wallet.dat corrupt, salvage failed"),
