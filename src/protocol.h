@@ -15,10 +15,15 @@
 #include <string>
 #include "uint256.h"
 
+#define DOTCOIN_PORT  10001
+#define DOTCOIN_RPC_PORT     10002
+#define TESTNET_PORT 10003
+#define TESTNET_RPC_PORT     10004
+
 extern bool fTestNet;
 static inline unsigned short GetDefaultPort(const bool testnet = fTestNet)
 {
-    return testnet ? 17777 : 7777;
+    return testnet ? TESTNET_PORT : DOTCOIN_PORT;
 }
 
 

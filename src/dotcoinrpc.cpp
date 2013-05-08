@@ -43,7 +43,7 @@ void ThreadRPCServer3(void* parg);
 
 static inline unsigned short GetDefaultRPCPort()
 {
-    return GetBoolArg("-testnet", false) ? 18344 : 8344;
+    return GetBoolArg("-testnet", false) ? TESTNET_RPC_PORT : DOTCOIN_RPC_PORT;
 }
 
 Object JSONRPCError(int code, const string& message)
