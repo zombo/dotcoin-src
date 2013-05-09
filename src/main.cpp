@@ -2495,7 +2495,7 @@ bool LoadBlockIndex(bool fAllowNew)
         // Genesis block
         const char* pszTimestamp = "I love xieluu and hanchen for ever. Visit my website :https://www.needdo.com.";
         CTransaction txNew;
-        txNew.nTime = nChainStartTime;//20130510-18:00:00
+        txNew.nTime = nChainStartTime;//20130510-18:00:00  1368208800
         txNew.vin.resize(1);
         txNew.vout.resize(1);
         txNew.vin[0].scriptSig = CScript() << 486604799 << CBigNum(9999) << vector<unsigned char>((const unsigned char*)pszTimestamp, (const unsigned char*)pszTimestamp + strlen(pszTimestamp));
@@ -2507,15 +2507,15 @@ bool LoadBlockIndex(bool fAllowNew)
         block.nVersion = 1;
         block.nTime    = nChainStartTime;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        //block.nNonce   = 100423;
+        block.nNonce   = 100423;
         //block.nTime    = 0;
         //block.nBits    = 0;
-        block.nNonce   = 0;
+        //block.nNonce   = 0;
 
 
 
         // If genesis block hash does not match, then generate new genesis hash.
-        if (true && block.GetHash() != hashGenesisBlock)//change false to true to generate the genesis block
+        if (false && block.GetHash() != hashGenesisBlock)//change false to true to generate the genesis block
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
