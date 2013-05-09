@@ -2512,26 +2512,27 @@ bool LoadBlockIndex(bool fAllowNew)
         block.nNonce   = 0;
 
         //debug print
-        printf("%s\n", block.GetHash().ToString().c_str());
-        printf("%s\n", hashGenesisBlock.ToString().c_str());
-        printf("%s\n", block.hashMerkleRoot.ToString().c_str());
-        block.print();
+        //printf("%s\n", block.GetHash().ToString().c_str());
+        //printf("%s\n", hashGenesisBlock.ToString().c_str());
+        //printf("%s\n", block.hashMerkleRoot.ToString().c_str());
+        //block.print();
 
         //// debug print
         assert(block.hashMerkleRoot == uint256("0x4cb33b3b6a861dcbc685d3e614a9cafb945738d6833f182855679f2fad02057b"));
         // If genesis block hash does not match, then generate new genesis hash.
-        /*if (false && block.GetHash() != hashGenesisBlock)
+        if (true && block.GetHash() != hashGenesisBlock)
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
             // creating a different genesis block:
             uint256 hashTarget = CBigNum().SetCompact(block.nBits).getuint256();
             uint256 thash;
-            char scratchpad[SCRYPT_SCRATCHPAD_SIZE];
 
             loop
             {
-                scrypt_1024_1_1_256_sp(BEGIN(block.nVersion), BEGIN(thash), scratchpad);
+                void * scratchbuff = scrypt_buffer_alloc();
+                scrypt_hash(CVOIDBEGIN(block.nVersion), sizeof(block_header),UINTBEGIN(thash), scratchbuff);
+                scrypt_buffer_free(scratchbuff);
                 if (thash <= hashTarget)
                     break;
                 if ((block.nNonce & 0xFFF) == 0)
@@ -2549,7 +2550,7 @@ bool LoadBlockIndex(bool fAllowNew)
             printf("block.nNonce = %u \n", block.nNonce);
             printf("block.GetHash = %s\n", block.GetHash().ToString().c_str());
         }
-        */
+
         block.print();
         assert(block.GetHash() == hashGenesisBlock);
         assert(block.CheckBlock());
