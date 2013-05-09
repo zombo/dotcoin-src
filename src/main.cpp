@@ -2507,10 +2507,10 @@ bool LoadBlockIndex(bool fAllowNew)
         block.nVersion = 1;
         block.nTime    = nChainStartTime;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 100423;
+        //block.nNonce   = 100423;
         //block.nTime    = 0;
         //block.nBits    = 0;
-        //block.nNonce   = 0;
+        block.nNonce   = 0;
 
 
         // debug print
@@ -2537,7 +2537,7 @@ bool LoadBlockIndex(bool fAllowNew)
                 scrypt_buffer_free(scratchbuff);
                 if (thash <= hashTarget)
                     break;
-                if ((block.nNonce & 0xFFF) == 0)
+                if ((block.nNonce & 0xFFFF) == 0)
                 {
                     printf("nonce %08X: hash = %s (target = %s)\n", block.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
                 }
