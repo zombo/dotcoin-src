@@ -2516,9 +2516,10 @@ bool LoadBlockIndex(bool fAllowNew)
         // debug print
         printf("block.GetHash() == %s\n", block.GetHash().ToString().c_str());
         printf("block.hashMerkleRoot == %s\n", block.hashMerkleRoot.ToString().c_str());
-        assert(block.hashMerkleRoot == uint256("0x0000061b427f5274648c8e7f73eae137fa408ed4a37bcf3b2c5e08614f07e3b3"));
+        //assert(block.hashMerkleRoot == uint256("0x0000061b427f5274648c8e7f73eae137fa408ed4a37bcf3b2c5e08614f07e3b3"));
+
         // If genesis block hash does not match, then generate new genesis hash.
-        if (false && block.GetHash() != hashGenesisBlock)//change false to true to generate the genesis block
+        if (true && block.GetHash() != hashGenesisBlock)//change false to true to generate the genesis block
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
@@ -2529,11 +2530,25 @@ bool LoadBlockIndex(bool fAllowNew)
             loop
             {
                 void * scratchbuff = scrypt_buffer_alloc();
-                scrypt_hash(CVOIDBEGIN(block.nVersion), sizeof(block_header),UINTBEGIN(thash), scratchbuff);
+
+                unsigned int max_nonce = 0xffff0000;
+                unsigned int nHashesDone = 0;
+                unsigned int nNonceFound;
+                block_header res_header;
+
+                nNonceFound = scanhash_scrypt(
+                            CVOIDBEGIN(block.nVersion),
+                            scratchbuff,
+                            max_nonce,
+                            nHashesDone,
+                            UBEGIN(thash),
+                            &res_header
+                            );
+                //scrypt_hash(CVOIDBEGIN(block.nVersion), sizeof(block_header),UINTBEGIN(thash), scratchbuff);
                 scrypt_buffer_free(scratchbuff);
                 if (thash <= hashTarget)
                     break;
-                if ((block.nNonce & 0xFFF) == 0)
+                if ((block.nNonce & 0xFFFF) == 0)
                 {
                     printf("nonce %08X: hash = %s (target = %s)\n", block.nNonce, thash.ToString().c_str(), hashTarget.ToString().c_str());
                 }
