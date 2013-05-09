@@ -256,8 +256,7 @@ SOURCES += src/qt/dotcoin.cpp src/qt/dotcoingui.cpp \
     src/pbkdf2.cpp
 
 RESOURCES += \
-    src/qt/dotcoin.qrc \
-    src/qt/dobitcoin.qrc
+    src/qt/dotcoin.qrc 
 
 FORMS += \
     src/qt/forms/sendcoinsdialog.ui \
