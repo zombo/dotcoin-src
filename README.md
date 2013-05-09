@@ -3,11 +3,13 @@ DotCoin official development tree
 
 DotCoin - a hybrid scrypt PoW + PoS based cryptocurrency.
 
-* 10 minute PoW block targets
-* 10 minute PoS block targets
+* 5 minute PoW block targets
+* 5 minute PoS block targets
 * The PoW subsidy halves every x64 multiply of difficulty
-* Maximum PoW reward is 100 coins
-* ~ 2 billion total coins
+* Maximum PoW reward is 200 coins
+* ~ 1 billion total coins
+* Minimum age for coin age is 7 days
+* Stake age of full weight is 30 days
 
 Development process
 ===========================
