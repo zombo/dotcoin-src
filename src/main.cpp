@@ -2504,9 +2504,12 @@ bool LoadBlockIndex(bool fAllowNew)
         block.hashPrevBlock = 0;
         block.hashMerkleRoot = block.BuildMerkleTree();
         block.nVersion = 1;
-        block.nTime    = 1360105017;
-        block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 1575379;
+        //block.nTime    = 1360105017;
+        //block.nBits    = bnProofOfWorkLimit.GetCompact();
+        //block.nNonce   = 1575379;
+        block.nTime    = 0;
+        block.nBits    = 0;
+        block.nNonce   = 0;
 
         //// debug print
         assert(block.hashMerkleRoot == uint256("0x4cb33b3b6a861dcbc685d3e614a9cafb945738d6833f182855679f2fad02057b"));
