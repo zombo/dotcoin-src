@@ -2537,7 +2537,7 @@ bool LoadBlockIndex(bool fAllowNew)
                 block_header res_header;
 
                 nNonceFound = scanhash_scrypt(
-                            CVOIDBEGIN(block.nVersion),
+                            (block_header *)(block.nVersion),
                             scratchbuff,
                             max_nonce,
                             nHashesDone,
