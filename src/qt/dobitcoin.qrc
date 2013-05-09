@@ -49,7 +49,7 @@
         <file alias="update_spinner">res/movies/update_spinner.mng</file>
     </qresource>
     <qresource prefix="/translations">
-        <file alias="en">locale/dotcoin_en.qm</file>
-        <file alias="ru">locale/dotcoin_ru.qm</file>
+        <file alias="en">locale/dotcoin_en.ts</file>
+        <file alias="ru">locale/dotcoin_ru.ts</file>
     </qresource>
 </RCC>
