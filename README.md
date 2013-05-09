@@ -3,8 +3,8 @@ DotCoin official development tree
 
 DotCoin - a hybrid scrypt PoW + PoS based cryptocurrency.
 
-* 5 minute PoW block targets
-* 5 minute PoS block targets
+* 1 minute PoW block targets
+* 1 minute PoS block targets
 * The PoW subsidy halves every x64 multiply of difficulty
 * Maximum PoW reward is 200 coins
 * ~ 1 billion total coins

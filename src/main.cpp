@@ -39,7 +39,7 @@ static CBigNum bnProofOfStakeHardLimit(~uint256(0) >> 30);
 static CBigNum bnInitialHashTarget(~uint256(0) >> 20);
 unsigned int nStakeMinAge = 60 * 60 * 24 * 7; // minimum age for coin age
 unsigned int nStakeMaxAge = 60 * 60 * 24 * 30; // stake age of full weight
-unsigned int nStakeTargetSpacing = 5 * 60; // 5-minute block spacing
+unsigned int nStakeTargetSpacing = 1 * 60; // 1-minute block spacing
 int nCoinbaseMaturity = 500;
 CBlockIndex* pindexGenesisBlock = NULL;
 int nBestHeight = -1;
@@ -2518,9 +2518,9 @@ bool LoadBlockIndex(bool fAllowNew)
         //block.print();
 
         //// debug print
-        assert(block.hashMerkleRoot == uint256("0x4cb33b3b6a861dcbc685d3e614a9cafb945738d6833f182855679f2fad02057b"));
+        assert(block.hashMerkleRoot == uint256("0x0000061b427f5274648c8e7f73eae137fa408ed4a37bcf3b2c5e08614f07e3b3"));
         // If genesis block hash does not match, then generate new genesis hash.
-        if (false && block.GetHash() != hashGenesisBlock)
+        if (false && block.GetHash() != hashGenesisBlock)//change false to true to generate the genesis block
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
