@@ -18,7 +18,7 @@ files:
 - "miniupnpc-1.6.tar.gz"
 - "zlib-1.2.7.tar.gz"
 - "libpng-1.5.12.tar.gz"
-- "qrencode-3.2.0.tar.bz2"
+- "qrencode-3.2.0.tar.gz"
 script: |
   #
   export LD_PRELOAD=/usr/lib/faketime/libfaketime.so.1
@@ -56,7 +56,7 @@ script: |
   make $MAKEOPTS
   cd ..
   #
-  tar xjf qrencode-3.2.0.tar.bz2
+  tar xjf qrencode-3.2.0.tar.gz
   cd qrencode-3.2.0
   ./configure CC=i586-mingw32msvc-cc AR=i586-mingw32msvc-ar STRIP=i586-mingw32msvc-strip RANLIB=i586-mingw32msvc-ranlib OBJDUMP=i586-mingw32msvc-objdump LD=i586-mingw32msvc-ld png_LIBS="../libpng-1.5.12/.libs/libpng15.a ../zlib-1.2.7/libz.a" png_CFLAGS="-I../libpng-1.5.12"
   make $MAKEOPTS
