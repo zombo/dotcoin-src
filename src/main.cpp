@@ -2507,15 +2507,15 @@ bool LoadBlockIndex(bool fAllowNew)
         block.nVersion = 1;
         block.nTime    = nChainStartTime;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 100423;
+        //block.nNonce   = 100423;
         //block.nTime    = 0;
         //block.nBits    = 0;
-        //block.nNonce   = 0;
+        block.nNonce   = 0;
 
 
 
         // If genesis block hash does not match, then generate new genesis hash.
-        if (false && block.GetHash() != hashGenesisBlock)//change false to true to generate the genesis block
+        if (true && block.GetHash() != hashGenesisBlock)//change false to true to generate the genesis block
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
@@ -2851,7 +2851,7 @@ bool static AlreadyHave(CTxDB& txdb, const CInv& inv)
 // The message start string is designed to be unlikely to occur in normal data.
 // The characters are rarely used upper ASCII, not valid as UTF-8, and produce
 // a large 4-byte int at any alignment.
-unsigned char pchMessageStart[4] = { 0xe4, 0xe8, 0xe9, 0xe5 };
+unsigned char pchMessageStart[4] = { 0xe1, 0xe2, 0xe3, 0xe4 };
 
 bool static ProcessMessage(CNode* pfrom, string strCommand, CDataStream& vRecv)
 {
