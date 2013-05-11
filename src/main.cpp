@@ -2507,15 +2507,15 @@ bool LoadBlockIndex(bool fAllowNew)
         block.nVersion = 1;
         block.nTime    = nChainStartTime;
         block.nBits    = bnProofOfWorkLimit.GetCompact();
-        block.nNonce   = 100423;
+        //block.nNonce   = 100423;
         //block.nTime    = 0;
         //block.nBits    = 0;
-       // block.nNonce   = 0;
+       block.nNonce   = 0;
 
 
 
         // If genesis block hash does not match, then generate new genesis hash.
-        if (false && block.GetHash() != hashGenesisBlock)//change false to true to generate the genesis block
+        if (true && block.GetHash() != hashGenesisBlock)//change false to true to generate the genesis block
         {
             printf("Searching for genesis block...\n");
             // This will figure out a valid hash and Nonce if you're
