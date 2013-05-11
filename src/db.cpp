@@ -962,7 +962,11 @@ bool CAddrDB::Read(CAddrMan& addr)
 
         // verify the network matches ours
         if (memcmp(pchMsgTmp, pchMessageStart, sizeof(pchMsgTmp)))
+        {
+            printf("pchMessageStart:%s\n",&pchMessageStart);
+            printf("pchMsgTmp:%s\n",&pchMsgTmp);
             return error("CAddrman::Read() : invalid network magic number");
+         }
 
         // de-serialize address data into one CAddrMan object
         ssPeers >> addr;
